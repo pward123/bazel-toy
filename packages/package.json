@@ -1,0 +1,15 @@
+{
+  "name": "packages",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "devDependencies": {
+      "@bazel/typescript": "0.20.3",
+      "@bazel/karma": "0.20.3"
+  }
+}

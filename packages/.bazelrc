@@ -1,0 +1,59 @@
+### Paul's notes
+### Most of this file was taken from
+### https://docs.bazel.build/versions/master/build-javascript.html
+###
+### Where this file should be placed:
+### ---------------------------------
+### As of 2018 1111, the link where this file came from incorrectly states that
+### this file should be placed into the %workspace%/tools/bazel.rc folder.
+### Instead the file should be placed in %workspace%/.bazel per issue #6319
+### https://github.com/bazelbuild/bazel/issues/6319 the file should be
+
+###############################
+# Directory structure         #
+###############################
+
+# Globally cache downloaded artifacts.
+build --experimental_repository_cache=/root/.cache/bazel_repository_cache/
+test --experimental_repository_cache=/root/.cache/bazel_repository_cache/
+run --experimental_repository_cache=/root/.cache/bazel_repository_cache/
+
+# Don't create bazel-* symlinks in the WORKSPACE directory. These
+# symlinks require .gitignore and may scare users. Instead, run
+# `bazel info bazel-bin` to find out where the outputs are stored.
+build --symlink_prefix=/
+
+# Another good choice is to create a dist/ directory. Then you can
+# use build --symlink_prefix=dist/ to get folders like dist/bin.
+# Be aware that this setup will still create a bazel-out symlink in
+# your project directory, which you may need to exclude from the
+# editor's search path.
+
+###############################
+# Output                      #
+###############################
+
+# A more useful default output mode for bazel query, which
+# prints "ng_module rule //foo:bar" instead of just "//foo:bar".
+query --output=label_kind
+
+# By default, failing tests don't print any output, it's logged to a
+# file instead.
+test --test_output=errors
+
+# Show which actions are running under which workers and print all
+# the actions running in parallel. This shows that Bazel runs on all
+# cores of a CPU.
+build --experimental_ui
+test --experimental_ui
+
+###############################
+# Typescript / Angular / Sass #
+###############################
+# Make TypeScript and Angular compilation fast, by keeping a few
+# copies of the compiler running as daemons, and cache SourceFile
+# ASTs to reduce parse time.
+#build --strategy=TypeScriptCompile=worker --strategy=AngularTemplateCompile=worker
+
+# Enable debugging tests with --config=debug
+test:debug --test_arg=--node_options=--inspect-brk --test_output=streamed --test_strategy=exclusive --test_timeout=9999 --nocache_test_results

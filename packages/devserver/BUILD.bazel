@@ -1,0 +1,36 @@
+package(default_visibility = ["//visibility:public"])
+load("@build_bazel_rules_typescript//:defs.bzl", "ts_devserver")
+
+filegroup(
+    name = "public_files",
+    srcs = glob(
+        include = ["public/**/*"],
+    ),
+)
+
+ts_devserver(
+    name = "devserver",
+
+    # serve these files rooted at /
+    additional_root_paths = [
+        "/my_workspace/devserver/public"
+    #     "npm/node_modules/zone.js/dist",
+    ],
+
+    # # Start from the development version of the main
+    # entry_module = "angular_bazel_example/src/main.dev",
+    # scripts = [
+    #     ":require.config.js",
+    # ],
+    # # This is the URL we'll point our <script> tag at
+    # serving_path = "/bundle.min.js",
+    # Serve these files in addition to the JavaScript bundle
+
+    static_files = [
+        ":public_files"
+        # "@npm//node_modules/zone.js:dist/zone.min.js",
+    ],
+
+    # Tell Bazel to build the sources first
+    # deps = ["//src"],
+)
