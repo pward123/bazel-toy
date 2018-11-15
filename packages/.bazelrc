@@ -6,8 +6,8 @@
 ### ---------------------------------
 ### As of 2018 1111, the link where this file came from incorrectly states that
 ### this file should be placed into the %workspace%/tools/bazel.rc folder.
-### Instead the file should be placed in %workspace%/.bazel per issue #6319
-### https://github.com/bazelbuild/bazel/issues/6319 the file should be
+### Instead the file should be placed in %workspace%/.bazel per
+### https://github.com/bazelbuild/bazel/issues/6319
 
 ###############################
 # Directory structure         #

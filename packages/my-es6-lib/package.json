@@ -1,16 +1,14 @@
 {
-  "name": "packages",
+  "name": "my-es6-lib",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@bazel/typescript": "0.20.3",
-    "@bazel/karma": "0.20.3",
-    "typescript": "2.9.2"
+    "@pward123/bazel-babel": "file:internal/babel_library"
   }
 }

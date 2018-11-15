@@ -1,0 +1,17 @@
+package(default_visibility = ["//visibility:public"])
+load("//internal/babel_library:defs.bzl", "babel_library")
+
+filegroup(
+    name = "source_files",
+    srcs = glob(
+        include = ["src/**/*"],
+    ),
+)
+
+babel_library(
+    name = "my-es6-lib",
+    babel = "@my_es6_lib_deps//@pward123/bazel-babel/bin:babel",
+    srcs = [
+        ":source_files",
+    ],
+)
