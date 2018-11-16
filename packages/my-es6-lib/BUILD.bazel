@@ -1,5 +1,8 @@
 package(default_visibility = ["//visibility:public"])
+
+load("@build_bazel_rules_nodejs//:defs.bzl", "nodejs_binary")
 load("//internal/babel_library:defs.bzl", "babel_library")
+load("//internal/rsync-dir:defs.bzl", "rsync_dir_nodejs_binary_data", "rsync_dir_nodejs_binary_entry_point")
 
 filegroup(
     name = "source_files",
@@ -9,9 +12,23 @@ filegroup(
 )
 
 babel_library(
-    name = "my-es6-lib",
+    name = "babelify",
     babel = "@my_es6_lib_deps//@pward123/bazel-babel/bin:babel",
     srcs = [
         ":source_files",
+    ],
+)
+
+# as a "let's slowly migrate to bazel" step, we're going to take the babelified
+# version of this package and copy it to the workspace as ./dist
+nodejs_binary(
+    name = "build",
+    entry_point = rsync_dir_nodejs_binary_entry_point,
+    data = rsync_dir_nodejs_binary_data + [
+        "//my-es6-lib:babelify",
+    ],
+    templated_args = [
+        "my-es6-lib/src",   # src path relative to process.env.PWD
+        "my-es6-lib/dist",  # dest relative to process.env.BUILD_WORKSPACE_DIRECTORY
     ],
 )

@@ -1,0 +1,5 @@
+exports_files([
+    "rsync-dir.js",
+    "package.json",
+    "package-lock.json",
+])

@@ -12,6 +12,7 @@ load("@build_bazel_rules_nodejs//:package.bzl", "rules_nodejs_dependencies")
 rules_nodejs_dependencies()
 
 load("@build_bazel_rules_nodejs//:defs.bzl", "node_repositories")
+load("//internal/rsync-dir:defs.bzl", "rsync_dir_package_json")
 node_repositories(
     node_version = "8.11.4",
     yarn_version = "1.10.1",
@@ -28,12 +29,16 @@ node_repositories(
     package_json = [
         "//:package.json",
         "//internal/babel_library:package.json",
+        rsync_dir_package_json,
         "//my-es6-lib:package.json",
     ]
 )
 
 load("//internal/babel_library:setup_workspace.bzl", "babel_library_setup_workspace")
 babel_library_setup_workspace()
+
+load("//internal/rsync-dir:setup_workspace.bzl", "rsync_dir_setup_workspace")
+rsync_dir_setup_workspace()
 
 load("//my-es6-lib:setup_workspace.bzl", "my_es6_lib_setup_workspace")
 my_es6_lib_setup_workspace()
