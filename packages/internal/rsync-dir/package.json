@@ -1,0 +1,13 @@
+{
+    "name": "@pward123/bazel-rsync-dir",
+    "description": "Helper to run rsync based-on bazel env vars",
+    "version": "0.1.0",
+    "bin": {
+        "babel": "./rsync-dir.js"
+    },
+    "main": "./rsync-dir.js",
+    "dependencies": {
+        "commander": "^2.19.0",
+        "fs-extra": "7.0.1"
+    }
+}
