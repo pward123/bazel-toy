@@ -3,6 +3,7 @@
 const babel = require("@babel/core");
 const fs = require("fs");
 const path = require("path");
+const pkg = require('./package.json')
 const program = require("commander");
 const { promisify } = require("util");
 
@@ -19,7 +20,7 @@ const mkdirp = async p => {
 };
 
 program
-  .version("1.0.0")
+  .version(pkg.version)
   .usage("[options] <files...>")
   .option("-o, --out-dir <value>", "Output directory for created files")
   .option("-c, --config-file <value>", "babel.rc.js config file")
