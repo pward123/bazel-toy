@@ -9,6 +9,6 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@pward123/bazel-babel": "file:internal/babel_library"
+    "@pward123/bazel-babel": "file:internal/babel-library"
   }
 }
