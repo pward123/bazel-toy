@@ -30,6 +30,6 @@ def babel_library_setup_workspace():
 
     npm_install(
         name = "babel_library_deps",
-        package_json = "//internal/babel_library:package.json",
-        package_lock_json = "//internal/babel_library:package-lock.json"
+        package_json = "//internal/babel-library:package.json",
+        package_lock_json = "//internal/babel-library:package-lock.json"
     )

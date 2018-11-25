@@ -181,7 +181,7 @@ babel_library = rule(
         ),
         "_babelrc_tmpl": attr.label(
             allow_single_file = True,
-            default = Label("//internal/babel_library:babel.rc.js")
+            default = Label("//internal/babel-library:babel.rc.js")
         ),
         "babelrc": attr.label(
             allow_single_file = True,

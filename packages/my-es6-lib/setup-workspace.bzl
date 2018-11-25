@@ -1,7 +1,7 @@
 "Install babel toolchain dependencies"
 
 load("@build_bazel_rules_nodejs//:defs.bzl", "check_bazel_version", "check_rules_nodejs_version", "npm_install")
-load("//internal/babel_library:defs.bzl", "babel_library_deps")
+load("//internal/babel-library:defs.bzl", "babel_library_deps")
 load("//internal/rsync-dir:defs.bzl", "rsync_dir_npm_install_data")
 
 def my_es6_lib_setup_workspace():
