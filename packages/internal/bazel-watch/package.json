@@ -1,0 +1,14 @@
+{
+    "name": "@pward123/bazel-watch",
+    "description": "",
+    "version": "0.1.0",
+    "bin": {
+        "babel": "dist/bazel-watch.js"
+    },
+    "main": "dist/bazel-watch.js",
+    "dependencies": {
+        "commander": "^2.19.0",
+        "fb-watchman": "^2.0.0",
+        "sane": "^4.0.2"
+    }
+}

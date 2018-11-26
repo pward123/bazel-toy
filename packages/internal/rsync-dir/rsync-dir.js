@@ -5,7 +5,7 @@ const fs = require('fs')
 const fsextra = require('fs-extra')
 const pkg = require('./package.json')
 const Path = require('path')
-const program = require("commander");
+const program = require('commander')
 const {promisify} = require('util')
 const childProcess = require('child_process')
 
@@ -37,7 +37,7 @@ const main = async () => {
             .option('-d, --dest-relative <env_var>', 'destPath is relative to this env var [BUILD_WORKSPACE_DIRECTORY]')
             .option('-n, --no-delete', 'Retain files in destPath that don\'t exist in sourcePath')
             .option('-r, --rsync-path', 'Path to rsync [/usr/bin/rsync]')
-            .parse(process.argv);
+            .parse(process.argv)
 
         const {
             sourceRelative: sourceEnv = 'PWD',
