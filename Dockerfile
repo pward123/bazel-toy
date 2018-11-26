@@ -94,4 +94,24 @@ RUN set -ex \
   && ln -s /opt/yarn-v$YARN_VERSION/bin/yarnpkg /usr/local/bin/yarnpkg \
   && rm yarn-v$YARN_VERSION.tar.gz.asc yarn-v$YARN_VERSION.tar.gz
 
-RUN yarn global add @bazel/ibazel
+###################
+# Install watchman
+###################
+RUN apt-get update && apt-get install --no-install-recommends -y \
+    autoconf \
+    automake \
+    build-essential \
+    python-dev \
+    libtool \
+    libssl-dev \
+    pkg-config \
+  && rm -rf /var/lib/apt/lists/*
+
+RUN git clone https://github.com/facebook/watchman.git /tmp/watchman \
+  && cd /tmp/watchman \
+  && ./autogen.sh \
+  && ./configure \
+  && make \
+  && make install \
+  && cd / \
+  && rm -rf /tmp/watchman

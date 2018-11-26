@@ -7,5 +7,4 @@
 
 ### TODO
 
-* Work around [issue](https://github.com/bazelbuild/bazel-watcher/issues/135) where ibazel doens't recognize added files
-* Work around issue where ibazel terminates if the build fails
+* Get bazel zipper working
